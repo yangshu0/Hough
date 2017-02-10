@@ -12,7 +12,7 @@ int main(int argc, char* arg[])
 	int w = img.cols;
 	int h = img.rows;
 	unsigned char* data = img.data;
-	int pmax = sqrt(w*w + h*h)/2;
+	int pmax = sqrt(w*w + h*h);
 	const int maxAngle = 180;
 	Mat hough = Mat::zeros(Size(maxAngle, pmax), CV_32SC1);
 	int* hdata = (int*) hough.data;
@@ -31,7 +31,7 @@ int main(int argc, char* arg[])
 					double theta = m * 2 * pi / 180;
 					double a = sin(theta);
 					double b = (cos(theta));
-					int p = (int)((j-w/2) * b + (i-h/2) * a) / 2;
+					int p = (int)((j-w/2) * b + (i-h/2) * a);
 					if(p>0)
 					hdata[p * maxAngle + m] = hdata[p * maxAngle + m] + 1;
 				}
